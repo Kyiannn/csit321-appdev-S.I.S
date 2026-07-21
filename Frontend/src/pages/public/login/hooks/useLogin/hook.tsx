@@ -42,7 +42,7 @@ function useLogin(){
             // Local-only check for now, no backend call, no cookies/session
             setLogin({...login,status:'success'})
 
-            navigate('/dashboard')
+            navigate('/profile')
 
         } catch (error: unknown) {
             if(error instanceof Error){

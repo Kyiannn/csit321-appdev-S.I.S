@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import LoginPage from "./pages/public/login";
 import RegisterPage from "./pages/public/register";
-import DashboardPage from "./pages/private/dashboard";
 import { ProfilePage, EditProfilePage } from "./pages/private/profile";
 import AuthLayout from "./layouts/auth";
 
@@ -15,7 +14,6 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
         </Route>
 
-        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/edit-profile" element={<EditProfilePage />} />
       </Routes>

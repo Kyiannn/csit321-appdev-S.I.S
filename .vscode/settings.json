@@ -3,5 +3,12 @@
     "java.project.sourcePaths": [
         "backend/src/main/java/com/sis/server/backend",
         "auth/src/main/java/com/zerofuku/auth/demo"
-    ]
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    }
 }

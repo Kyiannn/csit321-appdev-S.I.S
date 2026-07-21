@@ -1,52 +1,36 @@
-import { useState, useEffect, useCallback } from 'react';
+// pages/private/profile/hooks/useProfile.ts
+import { useState, useEffect } from 'react';
 import type { User } from '../types/profile.dto';
-import { profileService } from '../services/profileService';
-
+import { authService } from '../../../../services/authService';
 
 export const useProfile = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+    const [user, setUser] = useState<User | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        setIsLoading(true);
-        // Try to get user from the service
-        const userData = profileService.getUser();
-        setUser(userData);
-      } catch (error) {
-        console.error('Failed to fetch user data:', error);
-        setUser(profileService.getUser());
-      } finally {
-        setIsLoading(false);
-      }
+    useEffect(() => {
+        const loadUser = async () => {
+            try {
+                setIsLoading(true);
+                setError(null);
+                
+                const userData = await authService.getCurrentUser();
+                setUser(userData);
+            } catch (err) {
+                const errorMessage = err instanceof Error ? err.message : 'Failed to load profile';
+                setError(errorMessage);
+                console.error('Failed to fetch user:', err);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        loadUser();
+    }, []);
+
+    return {
+        user,
+        isLoading,
+        error
     };
-
-    fetchUserData();
-  }, []);
-
-  const updateUser = useCallback(async (fullName: string) => {
-    setIsLoading(true);
-    setError(null);
-
-    const result = await profileService.updateUser({ fullName });
-    
-    if (result.success) {
-      setUser(profileService.getUser());
-    } else {
-      setError(result.error || 'Failed to update profile');
-    }
-    
-    setIsLoading(false);
-    return result.success;
-  }, []);
-
-  return {
-    user,
-    error,
-    isLoading,
-    updateUser,
-    setError,
-  };
 };

@@ -36,7 +36,7 @@ const EditProfilePage: React.FC = () => {
     <ProfileLayout 
       title="Edit Profile" 
       subtitle="Update your information"
-      backPath="/dashboard"
+      backPath="/profile"
     >
       <Avatar initials={user.initials} />
 

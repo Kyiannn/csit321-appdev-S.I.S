@@ -55,7 +55,7 @@ function useRegister(){
             
             setRegister({ ...register, status: 'success' })
             
-            navigate("/profile")
+            navigate("/login")
 
         } catch (error: unknown) {
             if (error instanceof Error) {

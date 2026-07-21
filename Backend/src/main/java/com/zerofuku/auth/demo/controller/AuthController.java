@@ -11,6 +11,8 @@ import com.zerofuku.auth.demo.utils.CookieUtils;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Value;
+
+import jakarta.servlet.http.Cookie;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,5 +57,19 @@ public class AuthController {
         cookieUtils.addCookie(response, "jwt-token", token);
         return ResponseEntity.ok("Registered successfully!");
     }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpServletResponse response) {
+        Cookie cookie = new Cookie("jwt-cookie","");
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setPath("/");
+        cookie.setMaxAge(0);
+        cookie.setAttribute("SameSite", "Strict");
+        response.addCookie(cookie);
+        
+        return ResponseEntity.ok("Logged Out Successfully!");
+    }
+    
 
 }

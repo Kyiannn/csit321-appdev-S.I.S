@@ -21,18 +21,6 @@ export class ProfileValidationService {
     return null;
   }
 
-  static validateBio(bio: string): string | null {
-    const rules = profileValidation.bio;
-
-    if (rules.required && !bio.trim()) {
-      return 'Bio is required';
-    }
-    if (bio.length > rules.maxLength) {
-      return `Bio must not exceed ${rules.maxLength} characters`;
-    }
-    return null;
-  }
-
   static validateEmail(email: string): string | null {
     const rules = profileValidation.email;
 
@@ -51,17 +39,14 @@ export class ProfileValidationService {
   static validateAll(formData: {
     fullName: string;
     email: string;
-    bio: string;
   }): ValidationResult {
     const errors: Record<string, string> = {};
 
     const nameError = this.validateFullName(formData.fullName);
     const emailError = this.validateEmail(formData.email);
-    const bioError = this.validateBio(formData.bio);
 
     if (nameError) errors.fullName = nameError;
     if (emailError) errors.email = emailError;
-    if (bioError) errors.bio = bioError;
 
     return {
       isValid: Object.keys(errors).length === 0,

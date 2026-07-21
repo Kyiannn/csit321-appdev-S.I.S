@@ -19,7 +19,7 @@ class ProfileService {
   }
 
   getUser(): User {
-    return { ...this.user }; // Return a copy to prevent mutation
+    return { ...this.user };
   }
 
   async updateUser(updateData: UpdateProfileRequestDTO): Promise<{ success: boolean; error?: string }> {
@@ -27,7 +27,6 @@ class ProfileService {
     const validationResult = ProfileValidationService.validateAll({
       fullName: updateData.fullName || this.user.fullName,
       email: updateData.email || this.user.email,
-      bio: updateData.bio || this.user.bio,
     });
 
     if (!validationResult.isValid) {

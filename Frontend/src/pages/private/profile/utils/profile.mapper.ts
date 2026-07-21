@@ -9,7 +9,6 @@ export const mapUserToResponseDTO = (user: User): ProfileResponseDTO => {
     id: user.id || '1',
     fullName: user.fullName,
     email: user.email,
-    bio: user.bio,
     initials: user.initials,
     createdAt: user.createdAt || new Date().toISOString(),
     updatedAt: user.updatedAt || new Date().toISOString(),
@@ -24,9 +23,6 @@ export const mapUpdateRequestToUser = (
   if (updateRequest.fullName !== undefined) {
     updatedUser.fullName = updateRequest.fullName;
   }
-  if (updateRequest.bio !== undefined) {
-    updatedUser.bio = updateRequest.bio;
-  }
   if (updateRequest.email !== undefined) {
     updatedUser.email = updateRequest.email;
   }
@@ -37,11 +33,9 @@ export const mapUpdateRequestToUser = (
 export const mapFormDataToUpdateRequest = (
   formData: {
     fullName: string;
-    bio: string;
   }
 ): UpdateProfileRequestDTO => {
   return {
     fullName: formData.fullName,
-    bio: formData.bio,
   };
 };

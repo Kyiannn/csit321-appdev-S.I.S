@@ -2,7 +2,7 @@
 export interface ProfileBaseDTO {
   fullName: string;
   email: string;
-  bio: string;
+  // bio: string; // REMOVED
 }
 
 // Request DTO - What the client sends to the server
@@ -21,7 +21,7 @@ export interface User {
   id?: string;
   fullName: string;
   email: string;
-  bio: string;
+  // bio: string; // REMOVED
   initials: string;
   createdAt?: string;
   updatedAt?: string;
@@ -34,10 +34,10 @@ export interface ProfileValidationDTO {
     minLength: number;
     maxLength: number;
   };
-  bio: {
-    maxLength: number;
-    required: boolean;
-  };
+  // bio: { // REMOVED
+  //   maxLength: number;
+  //   required: boolean;
+  // };
   email: {
     required: boolean;
     pattern: string;
@@ -51,10 +51,6 @@ export const profileValidation: ProfileValidationDTO = {
     minLength: 2,
     maxLength: 50,
   },
-  bio: {
-    maxLength: 500,
-    required: false,
-  },
   email: {
     required: true,
     pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$',
@@ -66,7 +62,7 @@ export const createDefaultUser = (): User => ({
   id: '1',
   fullName: 'Jane Doe',
   email: 'jane.doe@email.com',
-  bio: 'Software developer passionate about creating beautiful and functional web applications. Loves React, TypeScript, and Tailwind CSS.',
+  // bio: 'Software developer passionate about creating beautiful and functional web applications. Loves React, TypeScript, and Tailwind CSS.', // REMOVED
   initials: 'JD',
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),

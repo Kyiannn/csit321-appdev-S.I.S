@@ -8,17 +8,16 @@ const EditProfilePage: React.FC = () => {
   const navigate = useNavigate();
   const { user, updateUser, error, setError, isLoading } = useProfile();
   
-  const [fullName, setFullName] = useState(user.fullName);
-  const [bio, setBio] = useState(user.bio);
+  const [fullName, setFullName] = useState(user?.fullName || '');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
 
+    // Validate only fullName and email
     const validationResult = ProfileValidationService.validateAll({
       fullName,
-      email: user.email,
-      bio,
+      email: user?.email || '',
     });
 
     if (!validationResult.isValid) {
@@ -26,11 +25,26 @@ const EditProfilePage: React.FC = () => {
       return;
     }
 
-    const success = await updateUser(fullName, bio);
+    // Pass only the fullName (updateUser expects 1 argument)
+    const success = await updateUser(fullName);
     if (success) {
       navigate('/profile');
     }
   };
+
+  if (!user) {
+    return (
+      <ProfileLayout 
+        title="Edit Profile" 
+        subtitle="Update your information"
+        backPath="/profile"
+      >
+        <div className="text-center py-8">
+          <p className="text-gray-500">Loading...</p>
+        </div>
+      </ProfileLayout>
+    );
+  }
 
   return (
     <ProfileLayout 
@@ -58,19 +72,6 @@ const EditProfilePage: React.FC = () => {
           value={user.email}
           onChange={() => {}}
           disabled
-        />
-
-        <InputField
-          id="bio"
-          label="Bio"
-          type="textarea"
-          value={bio}
-          onChange={setBio}
-          placeholder="Tell us about yourself..."
-          rows={4}
-          showCharCount
-          maxLength={500}
-          validate={ProfileValidationService.validateBio}
         />
 
         {error && (

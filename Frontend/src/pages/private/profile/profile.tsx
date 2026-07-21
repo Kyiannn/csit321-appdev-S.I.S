@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router';
 import { ProfileLayout, Avatar } from '../../../components/ui';
 import { useProfile } from './hooks/useProfile';
 import { mapUserToResponseDTO } from './utils/profile.mapper';
-import ProfileBio from './components/ProfileBio';
 import { authService } from '../../../services/authService';
 
 const ProfilePage: React.FC = () => {
@@ -41,7 +40,7 @@ const ProfilePage: React.FC = () => {
 
   if (!profile) {
     return (
-      <ProfileLayout showBackButton = {false}>
+      <ProfileLayout showBackButton={false}>
         <div className="text-center py-8">
           <p className="text-gray-500">Loading profile...</p>
         </div>
@@ -51,19 +50,13 @@ const ProfilePage: React.FC = () => {
 
   return (
     <>
-      <ProfileLayout showBackButton ={false}>
-        {/* Logout button - top right */}
-    
-         
-
+      <ProfileLayout showBackButton={false}>
         <Avatar initials={profile.initials} />
 
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-2">
           {profile.fullName}
         </h1>
         <span className="text-gray-500 text-center block mb-5">{profile.email}</span>
-
-        <ProfileBio bio={profile.bio} />
 
         <div className="h-px bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 my-5" />
 

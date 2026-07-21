@@ -1,19 +1,18 @@
 package com.zerofuku.auth.demo.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.zerofuku.auth.demo.dto.UserListResponse;
-import com.zerofuku.auth.demo.entity.UserEntity;
-import com.zerofuku.auth.demo.service.UserService;
-import com.zerofuku.auth.demo.dto.UserDTO;
-
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.zerofuku.auth.demo.dto.UserDTO;
+import com.zerofuku.auth.demo.dto.UserListResponse;
+import com.zerofuku.auth.demo.entity.UserEntity;
+import com.zerofuku.auth.demo.service.UserService;
 
 @RestController
 @RequestMapping("/api/user")
@@ -25,7 +24,7 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping("get/all")
+    @GetMapping("/get/all")
     public ResponseEntity<UserListResponse> getAllUsers(@AuthenticationPrincipal UserDetails userDetails) {
         List<UserDTO> allUsers = service.getAllUsers();
         return ResponseEntity.ok(new UserListResponse(allUsers));

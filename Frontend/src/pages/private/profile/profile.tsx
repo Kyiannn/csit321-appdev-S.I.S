@@ -61,12 +61,7 @@ const ProfilePage: React.FC = () => {
         <div className="h-px bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 my-5" />
 
         <div className="flex flex-col gap-3">
-          <button
-            className="px-8 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-500/30 active:translate-y-0 w-full"
-            onClick={() => navigate('/edit-profile')}
-          >
-            Edit Profile
-          </button>
+       
           
           <button
             onClick={() => setShowLogoutConfirm(true)}

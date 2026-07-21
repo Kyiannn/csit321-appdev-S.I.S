@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent } from "react"
 import { useNavigate } from "react-router"
+import { authService } from "../../../../../services/authService"
 
 type LoginState = {
     email: string,
@@ -39,11 +40,12 @@ function useLogin(){
             setLogin({...login,status:'loading'})
             await new Promise(resolve => setTimeout(resolve, 500));
 
-            // Local-only check for now, no backend call, no cookies/session
+            await authService.login({ email, password })
+                // Local-only check for now, no backend call, no cookies/session
             setLogin({...login,status:'success'})
 
             navigate('/profile')
-
+            
         } catch (error: unknown) {
             if(error instanceof Error){
                 setErrorMessage(error.message)

@@ -1,4 +1,4 @@
-package com.zerofuku.auth.demo.filter;
+package com.appdev.cutallbugsanditlogs.setinstone.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.zerofuku.auth.demo.service.JwtService;
+import com.appdev.cutallbugsanditlogs.setinstone.service.JwtService;
 
 import java.io.IOException;
 

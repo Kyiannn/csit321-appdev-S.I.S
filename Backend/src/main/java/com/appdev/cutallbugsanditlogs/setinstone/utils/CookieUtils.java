@@ -1,4 +1,4 @@
-package com.zerofuku.auth.demo.utils;
+package com.appdev.cutallbugsanditlogs.setinstone.utils;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.zerofuku.auth.demo.service;
+package com.appdev.cutallbugsanditlogs.setinstone.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

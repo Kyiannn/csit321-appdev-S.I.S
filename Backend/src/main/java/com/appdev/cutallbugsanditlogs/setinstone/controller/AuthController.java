@@ -1,12 +1,12 @@
-package com.zerofuku.auth.demo.controller;
+package com.appdev.cutallbugsanditlogs.setinstone.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zerofuku.auth.demo.dto.LoginRequest;
-import com.zerofuku.auth.demo.dto.RegisterRequest;
-import com.zerofuku.auth.demo.service.AuthService;
-import com.zerofuku.auth.demo.utils.CookieUtils;
+import com.appdev.cutallbugsanditlogs.setinstone.dto.LoginRequest;
+import com.appdev.cutallbugsanditlogs.setinstone.dto.RegisterRequest;
+import com.appdev.cutallbugsanditlogs.setinstone.service.AuthService;
+import com.appdev.cutallbugsanditlogs.setinstone.utils.CookieUtils;
 
 import jakarta.servlet.http.HttpServletResponse;
 

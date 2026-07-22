@@ -1,4 +1,4 @@
-package com.zerofuku.auth.demo.controller;
+package com.appdev.cutallbugsanditlogs.setinstone.controller;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zerofuku.auth.demo.dto.UserDTO;
-import com.zerofuku.auth.demo.dto.UserListResponse;
-import com.zerofuku.auth.demo.entity.UserEntity;
-import com.zerofuku.auth.demo.service.UserService;
+import com.appdev.cutallbugsanditlogs.setinstone.dto.UserDTO;
+import com.appdev.cutallbugsanditlogs.setinstone.dto.UserListResponse;
+import com.appdev.cutallbugsanditlogs.setinstone.entity.UserEntity;
+import com.appdev.cutallbugsanditlogs.setinstone.service.UserService;
 
 @RestController
 @RequestMapping("/api/user")

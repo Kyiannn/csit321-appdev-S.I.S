@@ -1,4 +1,4 @@
-package com.zerofuku.auth.demo.service;
+package com.appdev.cutallbugsanditlogs.setinstone.service;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -7,10 +7,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.zerofuku.auth.demo.dto.LoginRequest;
-import com.zerofuku.auth.demo.dto.RegisterRequest;
-import com.zerofuku.auth.demo.entity.UserEntity;
-import com.zerofuku.auth.demo.repository.UserRepository;
+import com.appdev.cutallbugsanditlogs.setinstone.dto.LoginRequest;
+import com.appdev.cutallbugsanditlogs.setinstone.dto.RegisterRequest;
+import com.appdev.cutallbugsanditlogs.setinstone.entity.UserEntity;
+import com.appdev.cutallbugsanditlogs.setinstone.repository.UserRepository;
 
 @Service
 public class AuthService {

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { User as UserIcon, Mail, Users, ChevronDown, ChevronUp } from 'lucide-react';
+import { User as UserIcon, Mail } from 'lucide-react';
 import { ProfileLayout, Avatar } from '../../../components/ui';
 import { useProfile } from './hooks/useProfile';
 import { authService } from '../../../services/authService';
-import type { User } from './types/profile.dto';
 
 const ProfilePage: React.FC = () => {
     const navigate = useNavigate();
@@ -12,29 +11,6 @@ const ProfilePage: React.FC = () => {
     const [isLoggingOut, setIsLoggingOut] = useState(false);
     const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
     const [logoutError, setLogoutError] = useState<string | null>(null);
-    const [allUsers, setAllUsers] = useState<User[]>([]);
-    const [isLoadingUsers, setIsLoadingUsers] = useState(false);
-    const [showUsersList, setShowUsersList] = useState(false);
-    const [usersError, setUsersError] = useState<string | null>(null);
-
-    // Fetch all users when component mounts
-    useEffect(() => {
-        const fetchAllUsers = async () => {
-            try {
-                setIsLoadingUsers(true);
-                setUsersError(null);
-                const response = await authService.getAllUsers();
-                setAllUsers(response.users || []);
-            } catch (err) {
-                console.error('Failed to fetch users:', err);
-                setUsersError(err instanceof Error ? err.message : 'Failed to load users');
-            } finally {
-                setIsLoadingUsers(false);
-            }
-        };
-
-        fetchAllUsers();
-    }, []);
 
     const handleLogout = async () => {
         setIsLoggingOut(true);
@@ -101,11 +77,6 @@ const ProfilePage: React.FC = () => {
         return username?.charAt(0).toUpperCase() || 'U';
     };
 
-    // Toggle users list
-    const toggleUsersList = () => {
-        setShowUsersList(!showUsersList);
-    };
-
     return (
         <>
             <ProfileLayout showBackButton={false}>
@@ -130,64 +101,6 @@ const ProfilePage: React.FC = () => {
                             <span className="font-semibold">Email:</span> {user.email}
                         </span>
                     </div>
-                </div>
-
-                <div className="h-px bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 my-5" />
-
-                {/* Users List Section */}
-                <div className="mb-5">
-                    <button
-                        onClick={toggleUsersList}
-                        className="w-full flex items-center justify-between px-4 py-3 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl hover:from-purple-100 hover:to-indigo-100 transition-colors duration-200"
-                    >
-                        <div className="flex items-center gap-2">
-                            <Users className="w-5 h-5 text-purple-600" />
-                            <span className="font-semibold text-gray-700">Registered Users</span>
-                            <span className="text-sm text-gray-500 bg-gray-200 px-2 py-0.5 rounded-full">
-                                {allUsers.length}
-                            </span>
-                        </div>
-                        {showUsersList ? (
-                            <ChevronUp className="w-5 h-5 text-gray-500" />
-                        ) : (
-                            <ChevronDown className="w-5 h-5 text-gray-500" />
-                        )}
-                    </button>
-
-                    {showUsersList && (
-                        <div className="mt-3 max-h-60 overflow-y-auto rounded-xl border border-gray-200">
-                            {isLoadingUsers ? (
-                                <div className="p-4 text-center text-gray-500">
-                                    <div className="animate-pulse">Loading users...</div>
-                                </div>
-                            ) : usersError ? (
-                                <div className="p-4 text-center text-red-500">
-                                    {usersError}
-                                </div>
-                            ) : allUsers.length === 0 ? (
-                                <div className="p-4 text-center text-gray-500">
-                                    No users registered yet
-                                </div>
-                            ) : (
-                                <div className="divide-y divide-gray-100">
-                                    {allUsers.map((u, index) => (
-                                        <div 
-                                            key={index}
-                                            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
-                                        >
-                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center text-white text-xs font-semibold">
-                                                {getInitials(u.username)}
-                                            </div>
-                                            <div className="flex-1">
-                                                <p className="text-sm font-medium text-gray-800">{u.username}</p>
-                                                <p className="text-xs text-gray-500">{u.email}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    )}
                 </div>
 
                 <div className="h-px bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 my-5" />

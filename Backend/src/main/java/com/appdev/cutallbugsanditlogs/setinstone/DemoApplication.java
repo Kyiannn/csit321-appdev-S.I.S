@@ -1,4 +1,4 @@
-package com.zerofuku.auth.demo;
+package com.appdev.cutallbugsanditlogs.setinstone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

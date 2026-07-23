@@ -1,4 +1,4 @@
-package com.zerofuku.auth.demo.dto;
+package com.appdev.cutallbugsanditlogs.setinstone.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.zerofuku.auth.demo.entity;
+package com.appdev.cutallbugsanditlogs.setinstone.entity;
 import java.util.UUID;
 
 import jakarta.persistence.Column;

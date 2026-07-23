@@ -1,13 +1,13 @@
-package com.zerofuku.auth.demo.service;
+package com.appdev.cutallbugsanditlogs.setinstone.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.zerofuku.auth.demo.dto.UserDTO;
-import com.zerofuku.auth.demo.entity.UserEntity;
-import com.zerofuku.auth.demo.repository.UserRepository;
+import com.appdev.cutallbugsanditlogs.setinstone.dto.UserDTO;
+import com.appdev.cutallbugsanditlogs.setinstone.entity.UserEntity;
+import com.appdev.cutallbugsanditlogs.setinstone.repository.UserRepository;
 
 @Service
 public class UserService {

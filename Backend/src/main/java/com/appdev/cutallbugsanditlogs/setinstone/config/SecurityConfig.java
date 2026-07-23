@@ -1,4 +1,4 @@
-package com.zerofuku.auth.demo.config;
+package com.appdev.cutallbugsanditlogs.setinstone.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -17,8 +17,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.zerofuku.auth.demo.filter.JwtAuthFilter;
-import com.zerofuku.auth.demo.service.JwtService;
+import com.appdev.cutallbugsanditlogs.setinstone.filter.JwtAuthFilter;
+import com.appdev.cutallbugsanditlogs.setinstone.service.JwtService;
 
 import java.util.List;
 
